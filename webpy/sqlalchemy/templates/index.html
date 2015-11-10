@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>
+        {% for list in all_list %}
+        <table>
+            <tr>
+                <td>{{list.id}}</td>
+                <td>{{list.hostname}}</td>
+                <td>{{list.ip}}</td>
+                <td>{{list.account}}</td>
+                <td>{{list.password}}</td>
+                <td>{{list.servicename}}</td>
+            </tr>
+        </table>
+        {% endfor %}
+    </div>
+</body>
+</html>

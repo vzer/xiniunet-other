@@ -1,0 +1,361 @@
+$def with (users)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+    <title style="font-family: 微软雅黑, Arial">犀牛网络VIP-WIFI系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
+    <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
+    <meta name="author" content="Codrops" />
+	<style type="text/css">
+
+	html, body, div, span, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	abbr, address, cite, code,
+	del, dfn, em, img, ins, kbd, q, samp,
+	small, strong, sub, sup, var,
+	b, i,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td {
+		margin:0;
+		padding:0;
+		border:0;
+		outline:0;
+		font-size:100%;
+		vertical-align:baseline;
+		background:transparent;
+	}
+
+	body {
+		margin:0;
+		padding:0;
+		font:12px/15px "Helvetica Neue",Arial, Helvetica, sans-serif;
+		color: #555;
+		background:#f5f5f5 url("/static/images/bg.jpg");
+	}
+
+	a {color:#666;}
+
+	#content {width:100%; max-width:800px; margin:1% auto 0;}
+
+	/*
+	Pretty Table Styling
+	CSS Tricks also has a nice writeup: http://css-tricks.com/feature-table-design/
+	*/
+
+	h1{
+		font-size: 53px;
+		font-family: 微软雅黑, Arial;
+		text-align: center;
+		verflow:hidden;
+		width:70%;
+		height: auto;
+		margin:5% auto 0;
+
+	}
+
+	table {
+		overflow:hidden;
+		border:1px solid #d3d3d3;
+		background:#fefefe;
+		width:70%;
+		margin:5% auto 0;
+		-moz-border-radius:5px; /* FF1+ */
+		-webkit-border-radius:5px; /* Saf3-4 */
+		border-radius:5px;
+		-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+		-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	}
+
+	th, td {padding:18px 28px 18px; text-align:center; }
+
+	th {padding-top:22px; text-shadow: 1px 1px 1px #fff; background:#e8eaeb;}
+
+	td {border-top:1px solid #e0e0e0; border-right:1px solid #e0e0e0;}
+
+	tr.odd-row td {background:#f6f6f6;}
+
+	td.first, th.first {text-align:left}
+
+	td.last {border-right:none;}
+
+	/*
+	Background gradients are completely unnecessary but a neat effect.
+	*/
+
+	td {
+		background: -moz-linear-gradient(100% 25% 90deg, #fefefe, #f9f9f9);
+		background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f9f9f9), to(#fefefe));
+	}
+
+	tr.odd-row td {
+		background: -moz-linear-gradient(100% 25% 90deg, #f6f6f6, #f1f1f1);
+		background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f1f1f1), to(#f6f6f6));
+	}
+
+	th {
+		background: -moz-linear-gradient(100% 20% 90deg, #e8eaeb, #ededed);
+		background: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#ededed), to(#e8eaeb));
+	}
+
+	/*
+	I know this is annoying, but we need additional styling so webkit will recognize rounded corners on background elements.
+	Nice write up of this issue: http://www.onenaught.com/posts/266/css-inner-elements-breaking-border-radius
+
+	And, since we've applied the background colors to td/th element because of IE, Gecko browsers also need it.
+	*/
+
+	tr:first-child th.first {
+		-moz-border-radius-topleft:5px;
+		-webkit-border-top-left-radius:5px; /* Saf3-4 */
+	}
+
+	tr:first-child th.last {
+		-moz-border-radius-topright:5px;
+		-webkit-border-top-right-radius:5px; /* Saf3-4 */
+	}
+
+	tr:last-child td.first {
+		-moz-border-radius-bottomleft:5px;
+		-webkit-border-bottom-left-radius:5px; /* Saf3-4 */
+	}
+
+	tr:last-child td.last {
+		-moz-border-radius-bottomright:5px;
+		-webkit-border-bottom-right-radius:5px; /* Saf3-4 */
+	}
+
+	/* Slider
+http://www.freshdesignweb.com/free-beautiful-css3-table-style.html
+*/
+#fdw-pricing-table {
+		margin:4px auto;
+		text-align: center;
+		width: 940px; /* total computed width */
+		zoom: 1;
+	}
+
+	#fdw-pricing-table:before, #fdw-pricing-table:after {
+	  content: "";
+	  display: table
+	}
+
+	#fdw-pricing-table:after {
+	  clear: both
+	}
+
+	/* --------------- */
+
+	#fdw-pricing-table .plan {
+		font: 13px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
+		background: #fff;
+		border: 1px solid #ddd;
+		color: #333;
+		padding: 20px;
+		width: 180px;
+		float: left;
+		_display: inline; /* IE6 double margin fix */
+		position: relative;
+		margin: 0 5px;
+		-moz-box-shadow: 0 2px 2px -1px rgba(0,0,0,.3);
+		-webkit-box-shadow: 0 2px 2px -1px rgba(0,0,0,.3);
+		box-shadow: 0 2px 2px -1px rgba(0,0,0,.3);
+	}
+
+	#fdw-pricing-table .plan:after {
+	  z-index: -1;
+	  position: absolute;
+	  content: "";
+	  bottom: 10px;
+	  right: 4px;
+	  width: 80%;
+	  top: 80%;
+	  -webkit-box-shadow: 0 12px 5px rgba(0, 0, 0, .3);
+	  -moz-box-shadow: 0 12px 5px rgba(0, 0, 0, .3);
+	  box-shadow: 0 12px 5px rgba(0, 0, 0, .3);
+	  -webkit-transform: rotate(3deg);
+	  -moz-transform: rotate(3deg);
+	  -o-transform: rotate(3deg);
+	  -ms-transform: rotate(3deg);
+	  transform: rotate(3deg);
+	}
+
+	#fdw-pricing-table .popular-plan {
+		top: -20px;
+		padding: 40px 20px;
+	}
+
+	/* --------------- */
+
+	#fdw-pricing-table .header {
+		position: relative;
+		font-size: 20px;
+		font-weight: normal;
+		text-transform: uppercase;
+		padding: 40px;
+		margin: -20px -20px 20px -20px;
+		border-bottom: 8px solid;
+		background-color: #eee;
+		background-image: -moz-linear-gradient(#fff,#eee);
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
+		background-image: -webkit-linear-gradient(#fff, #eee);
+		background-image: -o-linear-gradient(#fff, #eee);
+		background-image: -ms-linear-gradient(#fff, #eee);
+		background-image: linear-gradient(#fff, #eee);
+	}
+
+	#fdw-pricing-table .header:after {
+		position: absolute;
+		bottom: -8px; left: 0;
+		height: 3px; width: 100%;
+		content: '';
+		background-image: url(static/images/bar.png);
+	}
+
+	#fdw-pricing-table .popular-plan .header {
+		margin-top: -40px;
+		padding-top: 60px;
+	}
+
+	#fdw-pricing-table .plan1 .header{
+		border-bottom-color: #B3E03F;
+	}
+
+	#fdw-pricing-table .plan2 .header{
+		border-bottom-color: #7BD553;
+	}
+
+	#fdw-pricing-table .plan3 .header{
+		border-bottom-color: #3AD5A0;
+	}
+
+	#fdw-pricing-table .plan4 .header{
+		border-bottom-color: #45D0DA;
+	}
+
+	/* --------------- */
+
+	#fdw-pricing-table .price{
+		font-size: 45px;
+	}
+
+	#fdw-pricing-table .monthly{
+		font-size: 13px;
+		margin-bottom: 20px;
+		text-transform: uppercase;
+		color: #999;
+	}
+
+	/* --------------- */
+
+	#fdw-pricing-table ul {
+		margin: 20px 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	#fdw-pricing-table li {
+		padding: 10px 0;
+	}
+
+	/* --------------- */
+
+	#fdw-pricing-table .signup {
+		position: relative;
+		padding: 10px 20px;
+		color: #fff;
+		font: bold 14px Arial, Helvetica;
+		text-transform: uppercase;
+		text-decoration: none;
+		display: inline-block;
+		background-color: #72ce3f;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+		text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+		opacity: .9;
+	}
+
+	#fdw-pricing-table .signup:hover {
+		opacity: 1;
+	}
+
+	#fdw-pricing-table .signup:active {
+		-moz-box-shadow: 0 2px 2px rgba(0,0,0,.3) inset;
+		-webkit-box-shadow: 0 2px 2px rgba(0,0,0,.3) inset;
+		box-shadow: 0 2px 2px rgba(0,0,0,.3) inset;
+	}
+
+	#fdw-pricing-table .plan1 .signup{
+		background: #B3E03F;
+	}
+
+	#fdw-pricing-table .plan2 .signup{
+		background: #7BD553;
+	}
+
+	#fdw-pricing-table .plan3 .signup{
+		background: #3AD5A0;
+	}
+
+	#fdw-pricing-table .plan4 .signup{
+		background: #45D0DA;
+	}
+
+
+
+</style>
+</head>
+<body>
+<div id="content">
+	<div style="text-align: right">
+		<a class="signup" href="/changepd">修改密码</a>
+		<a style="margin-left: 3px" class="signup" href="/logout">退出</a>
+	</div>
+	<h1>用户信息</h1>
+    <table cellspacing="0">
+        <tr><td>用户名</td><td>密码</td><td>注册时间</td><td>公司名</td></tr>
+        $for i in users:
+	        <tr><td>$i.username</td><td>$i.value</td><td>$i.createtime</td><td>$i.company</td></tr>
+    </table>
+</div>
+
+<div id="fdw-pricing-table">
+    <div class="plan plan1">
+        <div style="font-family: 微软雅黑, Arial" class="header">苹果连接教程</div>
+        <ul>
+            <li style="font-family: 微软雅黑, Arial"><b>IPONE</b></li>
+            <li style="font-family: 微软雅黑, Arial"><b>MAC</b></li>
+            <li style="font-family: 微软雅黑, Arial"><b>IPAD</b></li>
+			<li style="font-family: 微软雅黑, Arial"><b>ITOUCH</b></li>
+        </ul>
+        <a class="signup" href="/lookiphone">查看</a>
+    </div>
+	<div class="plan plan2">
+        <div style="font-family: 微软雅黑, Arial" class="header">安卓连接教程</div>
+        <ul>
+            <li style="font-family: 微软雅黑, Arial"><b>手机</b></li>
+            <li style="font-family: 微软雅黑, Arial"><b>平板</b></li>
+        </ul>
+        <a class="signup" href="/lookiphone">查看</a>
+    </div>
+    <div class="plan plan3">
+        <div style="font-family: 微软雅黑, Arial" class="header">WinXP&7教程</div>
+        <ul>
+			<li style="font-family: 微软雅黑, Arial"><b>电脑</b></li>
+        </ul>
+        <a class="signup" href="/lookwin7">查看</a>
+    </div>
+    <div class="plan plan4">
+        <div style="font-family: 微软雅黑, Arial" class="header">Win8&UP教程</div>
+        <ul>
+			<li style="font-family: 微软雅黑, Arial"><b>电脑</b></li>
+        </ul>
+        <a class="signup" href="/lookwin8">查看</a>
+    </div>
+</div>
+</body>
+</html>

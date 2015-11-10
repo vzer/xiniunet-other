@@ -1,0 +1,53 @@
+{%- if fieldset.errors %}
+    <div class="alert alert-error form-error">
+    {% for field in fieldset.errors %}
+        <p>
+            <label for="{{ field|field_label }}">
+                <strong>{{ field|field_name }}:</strong>
+            </label>
+            <p>
+                {% for e in field.errors %}
+                    <p>{{ e }}</p>
+                {% endfor %}
+            </p>
+        </p>
+    {% endfor %}
+    </div>
+{% endif -%}
+
+{% for field in fieldset.render_fields.itervalues() %}
+    {% if field.requires_label %}
+    <div class="control-group">
+        <label class="control-label" for="{{ field|field_label }}">
+            {% if field.is_required() %}
+                <strong style="color: red;">*</strong>
+            {% endif %}
+            <strong>{{ field|field_name }}:</strong>
+        </label>
+
+        <div class="controls">
+        {% if field.is_required() %}
+            {{ field.with_html(required_='required').render() }}
+        {% else %}
+            {{ field.render() }}
+        {% endif %}
+
+        {% if 'instructions' in field.metadata %}
+            {% if field.metadata["instructions"] is iterable %}
+                {% for i in field.metadata["instructions"] %}
+                <p class="help-block">
+                    {{ i }}
+                </p>
+                {% endfor %}
+            {% else %}
+                <p class="help-block">
+                    {{ field.metadata["instructions"] }}
+                </p>
+            {% endif %}
+        {% endif %}
+        </div>
+    </div>
+    {% else %}
+    {{ field.render() }}
+    {% endif %}
+{% endfor %}

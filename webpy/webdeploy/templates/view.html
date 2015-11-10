@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- block meta  -->
+    <title>web 发布</title>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="../static/css/uikit.min.css">
+    <link rel="stylesheet" href="../static/css/uikit.gradient.min.css">
+    <link rel="stylesheet" href="../static/css/awesome.css" />
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/md5.js"></script>
+    <script src="../static/js/uikit.min.js"></script>
+    <script src="../static/js/sticky.min.js"></script>
+    <script src="../static/js/vue.min.js"></script>
+    <script src="../static/js/awesome.js"></script>
+
+</head>
+<body>
+    <nav class="uk-navbar uk-navbar-attached uk-margin-bottom">
+        <div class="uk-container uk-container-center">
+            <a href="/" class="uk-navbar-brand">首页</a>
+            <ul class="uk-navbar-nav">
+                <li data-url="blogs"><a href="/add/"><i class="uk-icon-home"></i>添加</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid">
+            <!-- content -->
+            
+
+    <div class="uk-width-medium-3-4">
+        <article class="uk-article">
+            {% if logList!=None %}
+                <h2>任务单号：{{logList.id}}</h2>
+                <hr class="uk-article-divider">
+                <p class="uk-article-meta">发布时间：{{logList.logtime}}</p>
+                <p class="uk-article-meta">发布用户：{{logList.user_id}}</p>
+                <p class="uk-article-meta">发布类型：{{logList.family}}</p>
+                <p class="uk-article-meta">发布模块：{{logList.models}}</p>
+                <p class="uk-article-meta">发布版本：{{logList.version}}</p>
+                <hr class="uk-article-divider">
+                <h4>当前状态：{{logList.status}}</h4>
+                <hr class="uk-article-divider">
+                <h5>步骤失败次数：{{logList.failure_times}}</h5>
+                <hr class="uk-article-divider">
+                <h6>LOG内容</h6>
+                {% if logList.context==None %}
+                    <pre>日志为空</pre>
+                {% else %}
+                    <pre>{{logList.context}}</pre>
+                {% endif %}
+            {% else %}
+                <h2>当前单号不存在！</h2>
+            {% endif %}
+        </article>
+        <hr class="uk-article-divider">
+    </div>
+            <!-- // content -->
+        </div>
+    </div>
+
+
+</body>
+</html>
